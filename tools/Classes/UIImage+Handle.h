@@ -19,6 +19,13 @@
 + (UIImage *)createImageWithColor:(UIColor *)color;
 
 /**
+ 截图
+
+ @param view 需要截图的view,如果为nil这截图keyWindow
+ @return 截的图
+ */
++ (UIImage *)screenShotsWithView:(UIView *)view;
+/**
  画一个删除的图片
 
  @param color 颜色
@@ -46,7 +53,16 @@
  @return 图片
  */
 + (UIImage *)createArrowImageWithColor:(UIColor *)color size:(CGSize)size lineWidth:(CGFloat)width andDirection:(NSUInteger)diretion;
+/**
+ 合成图像
 
+ @param backgroundImage 背景图
+ @param foregroundImage 前景图
+ @param size 合成图片尺寸
+ @param contentMode 合成方式（前景图在背景图的contentmode,参照UIImage的contentmode）
+@param complition 回调
+ */
++ (void)combinationImageWithbackgroundImage:(UIImage *)backgroundImage foregroundImage:(UIImage *)foregroundImage size:(CGSize)size contentMode:(UIViewContentMode)contentMode complitionHandler:(void(^)(UIImage *combinationImage,NSError *error))complition;
 /**
  设置图片新的size
 
@@ -77,4 +93,6 @@
  @param complition 回调
  */
 - (void)mosaicImageWithArea:(CGRect)area level:(NSUInteger)level complite:(void(^)(UIImage *mosimg))complition;
+
+
 @end

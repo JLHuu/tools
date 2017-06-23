@@ -22,7 +22,17 @@
     UIGraphicsEndImageContext();
     return img;
 }
-
++(UIImage *)screenShotsWithView:(UIView *)view
+{
+    if (!view) {
+        view = [UIApplication sharedApplication].keyWindow;
+    }
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, [UIScreen mainScreen].scale);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
 +(UIImage *)createDeleteImageWithColor:(UIColor *)color Size:(CGSize)size andLinewidth:(CGFloat)width
 {
     UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
@@ -59,8 +69,7 @@
 +(UIImage *)createArrowImageWithColor:(UIColor *)color size:(CGSize)size lineWidth:(CGFloat)width andDirection:(NSUInteger)diretion
 {
     //方向 1↑，2↓，3←，4→
-    // 画的是2倍图
-    UIGraphicsBeginImageContextWithOptions(size, NO, 2);
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(ctx, [UIColor clearColor].CGColor);
     CGContextFillRect(ctx, CGRectMake(0, 0, size.width, size.height));
@@ -107,6 +116,45 @@
     
     return img;
 }
+
++(void)combinationImageWithbackgroundImage:(UIImage *)backgroundImage foregroundImage:(UIImage *)foregroundImage size:(CGSize)size contentMode:(UIViewContentMode)contentMode complitionHandler:(void (^)(UIImage *, NSError *))complition
+{
+    if (!backgroundImage) {
+        if (complition) {
+            complition(nil,[NSError errorWithDomain:@"backgroundImage为nil" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"backgroundImage为nil！"}]);
+        }
+        return;
+    }
+    if (!foregroundImage) {
+        if (complition) {
+            complition(nil,[NSError errorWithDomain:@"foregroundImage为nil" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"foregroundImage为nil！"}]);
+        }
+        return;
+    }
+    if (size.height * size.width == 0) {
+        if (complition) {
+            complition(nil,[NSError errorWithDomain:@"size不正确" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"size不正确！"}]);
+        }
+        return;
+    }
+    dispatch_queue_t handleQueue = dispatch_queue_create("imagecombinationhandlequeue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(handleQueue, ^{
+        NSError *err;
+       // 图像处理
+        UIImageView *f_imv = [[UIImageView alloc] initWithImage:foregroundImage];
+        [f_imv setFrame:CGRectMake(0, 0, size.width, size.height)];
+        [f_imv setBackgroundColor:[UIColor clearColor]];
+        [f_imv setContentMode:contentMode];
+        f_imv.layer.masksToBounds = YES;
+        UIImage *new_fimg = [self screenShotsWithView:f_imv];
+//TODO: 合成
+        UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+
+        
+    });
+    
+}
+
 - (UIImage *)imageWithNewSize:(CGSize)size
 {
     if (!self || self.size.width == 0 || self.size.height == 0 || size.width == 0 || size.height == 0) {
