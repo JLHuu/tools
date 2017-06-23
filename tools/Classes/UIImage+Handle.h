@@ -4,7 +4,7 @@
 //
 //  Created by chang on 2017/6/7.
 //  Copyright © 2017年 SuperMap. All rights reserved.
-//
+//  https://github.com/JLHuu/tools.git
 
 #import <UIKit/UIKit.h>
 
