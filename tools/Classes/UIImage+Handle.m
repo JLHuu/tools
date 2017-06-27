@@ -139,7 +139,7 @@
     }
     dispatch_queue_t handleQueue = dispatch_queue_create("imagecombinationhandlequeue", DISPATCH_QUEUE_CONCURRENT);
     dispatch_async(handleQueue, ^{
-        NSError *err;
+        NSError *err = nil;
        // 图像处理
         UIImageView *f_imv = [[UIImageView alloc] initWithImage:foregroundImage];
         [f_imv setFrame:CGRectMake(0, 0, size.width, size.height)];
@@ -147,10 +147,17 @@
         [f_imv setContentMode:contentMode];
         f_imv.layer.masksToBounds = YES;
         UIImage *new_fimg = [self screenShotsWithView:f_imv];
-//TODO: 合成
+// 合成
         UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-
-        
+        [backgroundImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        [new_fimg drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        UIImage *newImg = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (complition) {
+                complition(newImg,err);
+            }
+        });
     });
     
 }
@@ -333,6 +340,11 @@
             }
         });
     });
+}
+
+-(void)changeImageColorWithColor:(UIColor *)color complite:(void (^)(UIImage *, NSError *))complition
+{
+    //TODO:11111111
 }
 
 @end

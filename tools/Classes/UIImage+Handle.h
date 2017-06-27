@@ -94,5 +94,11 @@
  */
 - (void)mosaicImageWithArea:(CGRect)area level:(NSUInteger)level complite:(void(^)(UIImage *mosimg))complition;
 
+/**
+ 改变一张图片的颜色，适用于单色调图片
 
+ @param color 颜色
+ @param complition 完成回调
+ */
+- (void)changeImageColorWithColor:(UIColor *)color complite:(void(^)(UIImage *image,NSError *error))complition;
 @end

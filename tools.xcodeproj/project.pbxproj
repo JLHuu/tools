@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0415B2A21F025FAE000E7304 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 0415B2A11F025FAE000E7304 /* 01.png */; };
+		0415B2A41F025FB4000E7304 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0415B2A31F025FB4000E7304 /* 1.jpeg */; };
 		0487A4611EFD07FD00569475 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487A4601EFD07FD00569475 /* main.m */; };
 		0487A4641EFD07FD00569475 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487A4631EFD07FD00569475 /* AppDelegate.m */; };
 		0487A4671EFD07FD00569475 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487A4661EFD07FD00569475 /* ViewController.m */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0415B2A11F025FAE000E7304 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
+		0415B2A31F025FB4000E7304 /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
 		0487A45C1EFD07FD00569475 /* tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0487A4601EFD07FD00569475 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0487A4621EFD07FD00569475 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +49,8 @@
 		0487A4531EFD07FD00569475 = {
 			isa = PBXGroup;
 			children = (
+				0415B2A31F025FB4000E7304 /* 1.jpeg */,
+				0415B2A11F025FAE000E7304 /* 01.png */,
 				0487A45E1EFD07FD00569475 /* tools */,
 				0487A45D1EFD07FD00569475 /* Products */,
 			);
@@ -150,8 +156,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0415B2A41F025FB4000E7304 /* 1.jpeg in Resources */,
 				0487A46F1EFD07FD00569475 /* LaunchScreen.storyboard in Resources */,
 				0487A46C1EFD07FD00569475 /* Assets.xcassets in Resources */,
+				0415B2A21F025FAE000E7304 /* 01.png in Resources */,
 				0487A46A1EFD07FD00569475 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +331,7 @@
 				0487A4751EFD07FD00569475 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

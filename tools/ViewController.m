@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UIImage+Handle.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [UIImage combinationImageWithbackgroundImage:[UIImage imageNamed:@"1.jpeg"] foregroundImage:[UIImage imageNamed:@"01.png"] size:CGSizeMake(40, 60) contentMode:UIViewContentModeTop complitionHandler:^(UIImage *combinationImage, NSError *error) {
+        UIImageView *imv  = [[UIImageView alloc] initWithImage:combinationImage];
+        [imv setFrame:CGRectMake(200, 200, 80, 120)];
+        [self.view addSubview:imv];
+    }];
+    
 }
 
 
