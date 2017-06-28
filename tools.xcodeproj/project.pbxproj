@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0415B2A21F025FAE000E7304 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 0415B2A11F025FAE000E7304 /* 01.png */; };
 		0415B2A41F025FB4000E7304 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0415B2A31F025FB4000E7304 /* 1.jpeg */; };
+		043B7EFA1F0389CF00D3B150 /* addressBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B7EF91F0389CF00D3B150 /* addressBookManager.m */; };
 		0487A4611EFD07FD00569475 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487A4601EFD07FD00569475 /* main.m */; };
 		0487A4641EFD07FD00569475 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487A4631EFD07FD00569475 /* AppDelegate.m */; };
 		0487A4671EFD07FD00569475 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487A4661EFD07FD00569475 /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* Begin PBXFileReference section */
 		0415B2A11F025FAE000E7304 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
 		0415B2A31F025FB4000E7304 /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
+		043B7EF81F0389CF00D3B150 /* addressBookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressBookManager.h; sourceTree = "<group>"; };
+		043B7EF91F0389CF00D3B150 /* addressBookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addressBookManager.m; sourceTree = "<group>"; };
 		0487A45C1EFD07FD00569475 /* tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0487A4601EFD07FD00569475 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0487A4621EFD07FD00569475 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043B7EF71F0389CF00D3B150 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				043B7EF81F0389CF00D3B150 /* addressBookManager.h */,
+				043B7EF91F0389CF00D3B150 /* addressBookManager.m */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
 		0487A4531EFD07FD00569475 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +104,7 @@
 		0487A4761EFD084C00569475 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				043B7EF71F0389CF00D3B150 /* managers */,
 				0487A4781EFD085600569475 /* UIImage+Handle.h */,
 				0487A4771EFD085600569475 /* UIImage+Handle.m */,
 			);
@@ -171,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043B7EFA1F0389CF00D3B150 /* addressBookManager.m in Sources */,
 				0487A4671EFD07FD00569475 /* ViewController.m in Sources */,
 				0487A4641EFD07FD00569475 /* AppDelegate.m in Sources */,
 				0487A4611EFD07FD00569475 /* main.m in Sources */,
