@@ -7,17 +7,16 @@
 //  https://github.com/JLHuu/tools.git
 
 #import <UIKit/UIKit.h>
-static NSMutableArray *arr = nil;
 
 @interface UIImage (Handle)
-
+NS_ASSUME_NONNULL_BEGIN
 /**
  通过颜色获取一张纯色图
 
  @param color 颜色
  @return 纯色图
  */
-+ (UIImage *)createImageWithColor:(UIColor *)color;
++ (UIImage *)createImageWithColor:(nullable UIColor *)color;
 
 /**
  截图
@@ -25,7 +24,7 @@ static NSMutableArray *arr = nil;
  @param view 需要截图的view,如果为nil这截图keyWindow
  @return 截的图
  */
-+ (UIImage *)screenShotsWithView:(UIView *)view;
++ (UIImage *)screenShotsWithView:(nullable UIView *)view;
 /**
  画一个删除的图片
 
@@ -63,7 +62,7 @@ static NSMutableArray *arr = nil;
  @param contentMode 合成方式（前景图在背景图的contentmode,参照UIImage的contentmode）
 @param complition 回调
  */
-+ (void)combinationImageWithbackgroundImage:(UIImage *)backgroundImage foregroundImage:(UIImage *)foregroundImage size:(CGSize)size contentMode:(UIViewContentMode)contentMode complitionHandler:(void(^)(UIImage *combinationImage,NSError *error))complition;
++ (void)combinationImageWithbackgroundImage:(UIImage *)backgroundImage foregroundImage:(UIImage *)foregroundImage size:(CGSize)size contentMode:(UIViewContentMode)contentMode complitionHandler:(nullable void(^)(UIImage *combinationImage,NSError *error))complition;
 /**
  设置图片新的size
 
@@ -85,7 +84,7 @@ static NSMutableArray *arr = nil;
 
  @param complition 反转色图片
  */
-- (void)reverseImagecomplite:(void(^)(UIImage *reverseimage))complition;
+- (void)reverseImagecomplite:(nullable void(^)(UIImage *reverseimage))complition;
 /**
  图片马赛克处理
 
@@ -93,7 +92,7 @@ static NSMutableArray *arr = nil;
  @param level 一个马赛克点大小
  @param complition 回调
  */
-- (void)mosaicImageWithArea:(CGRect)area level:(NSUInteger)level complite:(void(^)(UIImage *mosimg))complition;
+- (void)mosaicImageWithArea:(CGRect)area level:(NSUInteger)level complite:(nullable void(^)(UIImage *mosimg))complition;
 
 
 /**
@@ -111,5 +110,6 @@ static NSMutableArray *arr = nil;
  @param color 颜色
  @param finished 完成回调，主线程回调
  */
-- (void)changeImageColorWithColor:(UIColor *)color finished:(void(^)(UIImage *newImg,NSError *error))finished;
+- (void)changeImageColorWithColor:(UIColor *)color finished:(nullable void(^)(UIImage *newImg,NSError *error))finished;
+NS_ASSUME_NONNULL_END
 @end
