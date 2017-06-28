@@ -7,6 +7,7 @@
 //  https://github.com/JLHuu/tools.git
 
 #import <UIKit/UIKit.h>
+static NSMutableArray *arr = nil;
 
 @interface UIImage (Handle)
 
@@ -94,11 +95,21 @@
  */
 - (void)mosaicImageWithArea:(CGRect)area level:(NSUInteger)level complite:(void(^)(UIImage *mosimg))complition;
 
+
 /**
  改变一张图片的颜色，适用于单色调图片
 
  @param color 颜色
- @param complition 完成回调
+ @param error 错误信息
+ @return 图片
  */
-- (void)changeImageColorWithColor:(UIColor *)color complite:(void(^)(UIImage *image,NSError *error))complition;
+- (UIImage *)changeImageColorWithColor:(UIColor *)color error:(NSError **)error;
+
+/**
+ 改变一张图片的色值,适合纯色图(不会改变alpha值和rgb都为0的像素,消耗资源较大)，图片处理在全局队列中处理
+
+ @param color 颜色
+ @param finished 完成回调，主线程回调
+ */
+- (void)changeImageColorWithColor:(UIColor *)color finished:(void(^)(UIImage *newImg,NSError *error))finished;
 @end

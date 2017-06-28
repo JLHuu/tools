@@ -293,7 +293,7 @@
         //                colorcomponets[2] = tmp2; // B
         //            }
         //        }
-        /*去像素平均值*/
+        /*取level*level像素平均值*/
         UInt8 r = 0,g = 0,b = 0;
         for (size_t h=area_y; h < area_y+area_h; h++) {
             for (size_t w=area_x; w<area_x+area_w; w++) {
@@ -342,9 +342,72 @@
     });
 }
 
--(void)changeImageColorWithColor:(UIColor *)color complite:(void (^)(UIImage *, NSError *))complition
+-(UIImage *)changeImageColorWithColor:(UIColor *)color error:(NSError *__autoreleasing *)error
 {
-    //TODO:11111111
+    if (!self) {
+        if (error) {
+            *error = [NSError errorWithDomain:@"image为nil" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"image不能为nil"}];
+        }
+        return nil;
+    }
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(ctx, color.CGColor);
+    CGContextFillRect(ctx, CGRectMake(0, 0, self.size.width, self.size.height));
+    [self drawInRect:CGRectMake(0, 0, self.size.width, self.size.height) blendMode:kCGBlendModeDestinationIn alpha:1];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
 }
+-(void)changeImageColorWithColor:(UIColor *)color finished:(void (^)(UIImage *, NSError *))finished
+{
+    if (!self) {
+        if (finished) {
+            finished(self,[NSError errorWithDomain:@"image为nil" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"image不能为nil"}]);
+        }
+        return;
+    }
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        CGImageRef imgref = self.CGImage;
+        size_t width = CGImageGetWidth(imgref);
+        size_t height = CGImageGetHeight(imgref);
+        size_t bytesPerRow = CGImageGetBytesPerRow(imgref);
+        // copy 数据
+        CFDataRef data = CGDataProviderCopyData(CGImageGetDataProvider(imgref));
+        UInt8 *buffer = (UInt8*)CFDataGetBytePtr(data);// 首地址
+        NSUInteger  x, y;
+        // 像素矩阵遍历，改变成自己需要的值
+//        NSMutableString *str = [[NSMutableString alloc] init];
+        for (y = 0; y < height; y++) {
+            for (x = 0; x < width; x++) {
+                UInt8 *tmp;
+                tmp = buffer + y * bytesPerRow + x * 4;
+                if (!tmp[3] || (tmp[0] ==0 && tmp[1] == 0 && tmp[2] == 0)) {
+                    // 不处理rgb都为0或者alpha为0的像素点
+                }else{
+                    tmp[0] = 124;
+                    tmp[1] = 12;
+                    tmp[2] = 176;
+                }
+//                [str appendString:[NSString stringWithFormat:@"%3u-",tmp[0]]];
+            }
+//            [str appendString:@"\n"];
+        }
+//        NSLog(@"\n%@",str);
+        // 生成一张新的位图
+        CGImageRef newImageRef = CGImageCreate(width, height, CGImageGetBitsPerComponent(imgref), CGImageGetBitsPerPixel(imgref), CGImageGetBytesPerRow(imgref), CGImageGetColorSpace(imgref), CGImageGetBitmapInfo(imgref), CGDataProviderCreateWithCFData(data), CGImageGetDecode(imgref), CGImageGetShouldInterpolate(imgref), CGImageGetRenderingIntent(imgref));
+        UIImage *newImage = [[UIImage alloc] initWithCGImage:newImageRef];
+        CFRelease(data);
+        CFRelease(newImageRef);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (finished) {
+                finished(newImage,nil);
+            }
+        });
+    });
+    
+
+}
+
 
 @end
