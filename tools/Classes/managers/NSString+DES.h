@@ -4,10 +4,13 @@
 //
 //  Created by chang on 2017/6/29.
 //  Copyright © 2017年 HJL. All rights reserved.
-//
+//  https://github.com/JLHuu/tools.git
 
 #import <Foundation/Foundation.h>
 
+/**
+ 3DES加密解密
+ */
 @interface NSString (DES)
 NS_ASSUME_NONNULL_BEGIN
 /**加密*/

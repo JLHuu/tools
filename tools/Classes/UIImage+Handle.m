@@ -264,8 +264,8 @@
 -(void)mosaicImageWithArea:(CGRect)area level:(NSUInteger)level complite:(void (^)(UIImage *))complition
 {
     if (!level) {
-        if (complite) {
-            complite(self);
+        if (complition) {
+            complition(self);
         }
         return;
     }

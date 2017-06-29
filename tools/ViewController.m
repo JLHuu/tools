@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "UIImage+Handle.h"
+#import "NSString+DES.h"
 
 @interface ViewController ()
 @property(nonatomic,strong)UIImageView *imv;
