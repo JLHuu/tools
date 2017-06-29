@@ -35,30 +35,6 @@ static NSString *defaultKey = @"1234567890";
     
     return [[NSString alloc] initWithData:dataDecrpt encoding:NSUTF8StringEncoding];
 }
-//+(NSString *)DESDecrypt:(NSString *)dataString key:(NSString *)key
-//{
-//    NSData *data = [self dataConvertFromDataString:dataString];
-//    
-//    NSData *dataDecrpt = [self DESDecrypt:data WithKey:key];
-//    
-//    return [[NSString alloc] initWithData:dataDecrpt encoding:NSUTF8StringEncoding];
-//}
-//
-//+(NSString *)DESEncrypt:(NSString *)string key:(NSString *)key
-//{
-//    return [self stringByReplacingSpacesAndBracketsFromData:[self DESEncrypt:[string dataUsingEncoding:NSUTF8StringEncoding] WithKey:key]];
-//}
-//
-//+ (NSString *)DESEncrypt:(NSString *)string
-//{
-//    return [self DESEncrypt:string key:defaultKey];
-//}
-//
-//+ (NSString *)DESDecrypt:(NSString *)dataString
-//{
-//    return [self DESDecrypt:dataString key:defaultKey];
-//}
-
 + (NSData *)DESEncrypt:(NSData *)data WithKey:(NSString *)key
 {
     char keyPtr[kCCKeySizeAES256+1];
