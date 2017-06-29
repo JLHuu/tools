@@ -264,9 +264,11 @@
 -(void)mosaicImageWithArea:(CGRect)area level:(NSUInteger)level complite:(void (^)(UIImage *))complition
 {
     if (!level) {
+        if (complite) {
+            complite(self);
+        }
         return;
     }
-    // scale
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         CGImageRef imgref = self.CGImage;
         CGDataProviderRef dataProvider = CGImageGetDataProvider(imgref);
@@ -315,7 +317,6 @@
                     r = (UInt8) (R/(rellevel_i * rellevel_j));
                     g = (UInt8) (G/(rellevel_i * rellevel_j));
                     b = (UInt8) (B/(rellevel_i * rellevel_j));
-                    //                    printf("(%u,%u,%u)%3u,%3u,%3u\t",R,G,B,r,g,b);
                     // 重新给level*level像素点的RGB赋值
                     for (size_t i = 0; i<rellevel_i; i++) {
                         for (size_t j=0; j<rellevel_j; j++) {
