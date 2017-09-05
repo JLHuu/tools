@@ -10,6 +10,7 @@
 		0415B2A21F025FAE000E7304 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 0415B2A11F025FAE000E7304 /* 01.png */; };
 		0415B2A41F025FB4000E7304 /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0415B2A31F025FB4000E7304 /* 1.jpeg */; };
 		041A87A61F04A20400529C6D /* NSString+DES.m in Sources */ = {isa = PBXBuildFile; fileRef = 041A87A51F04A20400529C6D /* NSString+DES.m */; };
+		0426B7C21F5E45240091CB96 /* UITextField+limitWords.m in Sources */ = {isa = PBXBuildFile; fileRef = 0426B7C11F5E45240091CB96 /* UITextField+limitWords.m */; };
 		043466051F0B441B009DC9AE /* 002.png in Resources */ = {isa = PBXBuildFile; fileRef = 043466031F0B441B009DC9AE /* 002.png */; };
 		043466061F0B441B009DC9AE /* 001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 043466041F0B441B009DC9AE /* 001.jpg */; };
 		043B7EFA1F0389CF00D3B150 /* addressBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B7EF91F0389CF00D3B150 /* addressBookManager.m */; };
@@ -28,6 +29,8 @@
 		0415B2A31F025FB4000E7304 /* 1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpeg; sourceTree = "<group>"; };
 		041A87A41F04A20400529C6D /* NSString+DES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DES.h"; sourceTree = "<group>"; };
 		041A87A51F04A20400529C6D /* NSString+DES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DES.m"; sourceTree = "<group>"; };
+		0426B7C01F5E45240091CB96 /* UITextField+limitWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+limitWords.h"; sourceTree = "<group>"; };
+		0426B7C11F5E45240091CB96 /* UITextField+limitWords.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+limitWords.m"; sourceTree = "<group>"; };
 		043466031F0B441B009DC9AE /* 002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 002.png; sourceTree = "<group>"; };
 		043466041F0B441B009DC9AE /* 001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 001.jpg; sourceTree = "<group>"; };
 		043B7EF81F0389CF00D3B150 /* addressBookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addressBookManager.h; sourceTree = "<group>"; };
@@ -59,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0426B7BF1F5E45080091CB96 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0426B7C01F5E45240091CB96 /* UITextField+limitWords.h */,
+				0426B7C11F5E45240091CB96 /* UITextField+limitWords.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		043B7EF71F0389CF00D3B150 /* managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +130,7 @@
 		0487A4761EFD084C00569475 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0426B7BF1F5E45080091CB96 /* UI */,
 				043B7EF71F0389CF00D3B150 /* managers */,
 				0487A4781EFD085600569475 /* UIImage+Handle.h */,
 				0487A4771EFD085600569475 /* UIImage+Handle.m */,
@@ -205,6 +218,7 @@
 				04CF64A51F062D6E0054418A /* UIImage+diskCache.m in Sources */,
 				043B7EFA1F0389CF00D3B150 /* addressBookManager.m in Sources */,
 				0487A4671EFD07FD00569475 /* ViewController.m in Sources */,
+				0426B7C21F5E45240091CB96 /* UITextField+limitWords.m in Sources */,
 				0487A4641EFD07FD00569475 /* AppDelegate.m in Sources */,
 				0487A4611EFD07FD00569475 /* main.m in Sources */,
 				041A87A61F04A20400529C6D /* NSString+DES.m in Sources */,
