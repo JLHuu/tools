@@ -69,9 +69,9 @@ static char lb = 't';
                     NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, self.maxLength)];
                     textField.text = [toBeString substringWithRange:rangeRange];
                 }
-                [self getObserveBlock](YES,textField.text);
+                [self getObserveBlock]?:[self getObserveBlock](YES,textField.text);
             }else{
-                [self getObserveBlock](NO,textField.text);
+                [self getObserveBlock]?:[self getObserveBlock](NO,textField.text);
             }
         }
     }else
@@ -88,9 +88,9 @@ static char lb = 't';
                 NSRange rangeRange = [toBeString rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, self.maxLength)];
                 textField.text = [toBeString substringWithRange:rangeRange];
             }
-            [self getObserveBlock](YES,textField.text);
+            [self getObserveBlock]?:[self getObserveBlock](YES,textField.text);
         }else{
-            [self getObserveBlock](NO,textField.text);
+            [self getObserveBlock]?:[self getObserveBlock](NO,textField.text);
         }
     }
     
